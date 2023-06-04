@@ -7,6 +7,7 @@ on:
       - develop
 env:
   DOTNET_VERSION: "7.0.x"
+  PROJECT_API: "src/Api/POC.MSPago.WebApi/POC.MSPago.WebApi.csproj"
 
 jobs:
   build:
@@ -22,10 +23,10 @@ jobs:
           include-prerelease: true
           
       - name: Install dependencies 📂
-        run: dotnet restore   
+        run: dotnet restore ${{ env.PROJECT_API }} 
 
       - name: Build 🧱
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build ${{ env.PROJECT_API }} --configuration Release --no-restore
 
       - name: Test 🧪
-        run: dotnet test --configuration Release --no-build
+        run: dotnet test ${{ env.PROJECT_API }} --configuration Release --no-build
