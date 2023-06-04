@@ -32,6 +32,7 @@ builder.Services.AddSingleton(microserviceProperties);
 var app = builder.Build();
 
 
+app.MapHealthChecks("/healthz");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
