@@ -12,7 +12,7 @@ env:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
           include-prerelease: true
           
       - name: Install dependencies 📂
-        run: dotnet restore WebApi   
+        run: dotnet restore   
 
       - name: Build 🧱
         run: dotnet build --configuration Release --no-restore
