@@ -8,6 +8,7 @@ env:
   AZURE_WEBAPP_NAME: csonicdev01
   AZURE_WEBAPP_PACKAGE_PATH: "./publish"
   DOTNET_VERSION: "7.0.x"
+  PROJECT_API: "src/Api/POC.MSPago.WebApi/POC.MSPago.WebApi.csproj"
 
 jobs:
   build:
@@ -23,9 +24,9 @@ jobs:
 
       - name: Build and Publish 📂
         run: |
-          dotnet restore
-          dotnet build -c Release --no-restore
-          dotnet publish -c Release --no-build
+          dotnet restore ${{ env.PROJECT_API }}
+          dotnet build ${{ env.PROJECT_API }} -c Release --no-restore
+          dotnet publish ${{ env.PROJECT_API }} -c Release --no-build  --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
 
       - name: Deploy to Azure 🌌
         uses: azure/webapps-deploy@v2
