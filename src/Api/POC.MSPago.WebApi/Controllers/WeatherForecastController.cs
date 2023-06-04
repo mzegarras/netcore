@@ -18,7 +18,7 @@ public class WeatherForecastController : ControllerBase
 
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
+    [HttpGet(Name = "Get")]
     public string Get()
     {
         return $"Development: {hostEnvironment.IsDevelopment} - Production: {hostEnvironment.IsProduction}" ;
