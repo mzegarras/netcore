@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "POC.MSPago.Domain/1.0.0": {
+        "runtime": {
+          "POC.MSPago.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "POC.MSPago.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
