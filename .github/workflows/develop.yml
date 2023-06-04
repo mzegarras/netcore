@@ -30,4 +30,4 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Test 🧪
-        run: dotnet test WebApi --configuration Release --no-build
+        run: dotnet test --configuration Release --no-build
