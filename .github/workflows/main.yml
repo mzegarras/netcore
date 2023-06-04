@@ -1,0 +1,37 @@
+name: Publish 🚀
+
+on:
+  push:
+    branches:
+    - main
+
+env:
+  AZURE_WEBAPP_NAME: csonicdev01
+  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
+  DOTNET_VERSION: "7.0.x"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET 📦
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Build and Publish 📂
+        run: |
+          dotnet restore
+          dotnet build -c Release --no-restore
+          dotnet publish -c Release --no-build
+            --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+
+      - name: Deploy to Azure 🌌
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8ED58B3E900A4D21A390338AAA7CBF36 }}
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
